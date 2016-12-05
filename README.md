@@ -42,3 +42,18 @@
         }
         return $newData;
     }
+
+    public function explN($ar)
+    {
+        $newData = [];
+        $allData = [];
+        foreach ($ar as $key => $val) {
+            $rm = explode('.', $key);
+            $rm= array_reverse($rm);
+            foreach ($rm as $val2) {
+                $newData = $this->conv($rm, $val);
+                $allData = array_replace_recursive($allData, $newData);
+            }
+        }
+        return $allData;
+    }
